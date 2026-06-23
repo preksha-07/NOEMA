@@ -1,0 +1,14 @@
+Supported Commands:
+
+G00 X Y Z
+→ rapid travel
+
+G01 X Y Z F
+→ linear motion
+
+DONE
+→ execution finished
+
+Future:
+G02/G03
+→ arcs

@@ -1,0 +1,440 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Inter,Segoe UI,sans-serif;
+background:#05010f;
+color:white;
+overflow-x:hidden;
+}
+
+/* =========================
+VIDEO BACKGROUND
+========================= */
+
+.video-background{
+position:fixed;
+inset:0;
+z-index:-3;
+overflow:hidden;
+}
+
+.video-background video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.video-overlay{
+position:absolute;
+inset:0;
+background:rgba(5,1,15,.84);
+backdrop-filter:blur(3px);
+}
+
+/* =========================
+COMMON
+========================= */
+
+section{
+padding:90px 8%;
+}
+
+.glass-card{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+border-radius:30px;
+box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.section-heading{
+margin-bottom:40px;
+}
+
+.section-heading.center{
+text-align:center;
+}
+
+.section-heading h2{
+font-size:42px;
+font-weight:400;
+margin-bottom:12px;
+}
+
+.section-heading p{
+color:#bdbdc7;
+}
+
+.workspace-tag{
+display:inline-block;
+margin-bottom:25px;
+padding:12px 18px;
+border-radius:999px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+color:#00ff9d;
+}
+
+/* =========================
+HEADER
+========================= */
+
+.workspace-header{
+min-height:85vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:0 8%;
+}
+
+.workspace-header h1{
+font-size:82px;
+font-weight:300;
+margin-bottom:20px;
+}
+
+.workspace-header p{
+font-size:18px;
+color:#bdbdc7;
+max-width:700px;
+margin:0 auto 35px;
+}
+
+.status-container{
+display:flex;
+justify-content:center;
+gap:14px;
+flex-wrap:wrap;
+}
+
+.status-pill{
+padding:12px 18px;
+border-radius:999px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+}
+
+/* =========================
+CONTROL CENTER
+========================= */
+
+.control-center{
+padding:40px;
+}
+
+.control-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+}
+
+.control-group{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.control-group label{
+color:#bdbdc7;
+}
+
+.control-group input,
+.control-group select{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:16px;
+color:white;
+padding:14px;
+}
+
+.mode-buttons{
+display:flex;
+gap:10px;
+}
+
+.mode-buttons button{
+flex:1;
+padding:12px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+background:rgba(255,255,255,.05);
+color:white;
+}
+
+.active-mode{
+background:linear-gradient(135deg,#00ff9d,#00d4ff)!important;
+color:black!important;
+font-weight:700;
+}
+
+.action-buttons{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+margin-top:35px;
+}
+
+.action-btn{
+padding:14px 24px;
+border:none;
+border-radius:14px;
+cursor:pointer;
+background:rgba(255,255,255,.05);
+color:white;
+transition:.3s;
+}
+
+.action-btn:hover{
+transform:translateY(-3px);
+background:rgba(255,255,255,.12);
+}
+
+/* =========================
+COMPARISON
+========================= */
+
+.comparison-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+.comparison-card{
+padding:30px;
+}
+
+.comparison-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.red-dot,
+.green-dot{
+width:12px;
+height:12px;
+border-radius:50%;
+}
+
+.red-dot{
+background:#ff5c73;
+}
+
+.green-dot{
+background:#00ff9d;
+}
+
+.path-image{
+
+width:100%;
+
+height:260px;
+
+object-fit:contain;
+
+background:rgba(255,255,255,.02);
+
+border-radius:18px;
+
+border:1px solid rgba(255,255,255,.05);
+
+}
+
+.comparison-stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+text-align:center;
+margin-top:22px;
+}
+
+.comparison-stats span{
+display:block;
+color:#9ca3af;
+margin-bottom:8px;
+}
+
+.comparison-stats strong{
+font-size:24px;
+}
+
+.improvement-banner{
+margin-top:60px;
+text-align:center;
+}
+
+.improvement-banner h1{
+font-size:100px;
+color:#00ff9d;
+font-weight:700;
+}
+
+.improvement-banner p{
+color:#bdbdc7;
+font-size:18px;
+}
+
+/* =========================
+METRICS
+========================= */
+
+.metrics-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.metric-card{
+padding:30px;
+text-align:center;
+border-radius:24px;
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.metric-card h3{
+color:#bdbdc7;
+margin-bottom:14px;
+}
+
+.metric-card p{
+font-size:30px;
+font-weight:700;
+}
+
+/* =========================
+DIGITAL TWIN
+========================= */
+
+.digital-twin{
+padding:50px;
+}
+
+.twin-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+.twin-card{
+padding:30px;
+border-radius:24px;
+background:rgba(255,255,255,.03);
+}
+
+.twin-card h3{
+margin-bottom:20px;
+}
+
+.twin-card ul{
+list-style:none;
+}
+
+.twin-card li{
+padding:12px 0;
+border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+/* =========================
+TERMINAL
+========================= */
+
+.terminal{
+background:black;
+border-radius:24px;
+min-height:350px;
+padding:30px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+#terminal-output{
+color:#00ff9d;
+white-space:pre-line;
+font-family:Consolas,monospace;
+line-height:1.8;
+}
+
+/* =========================
+CTA
+========================= */
+
+.workspace-cta{
+text-align:center;
+}
+
+.workspace-cta h2{
+font-size:60px;
+font-weight:300;
+margin-bottom:15px;
+}
+
+.workspace-cta p{
+color:#bdbdc7;
+margin-bottom:35px;
+}
+
+.cta-buttons{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.cta-buttons button{
+border:none;
+cursor:pointer;
+padding:18px 32px;
+border-radius:999px;
+font-size:16px;
+}
+
+.cta-buttons button:first-child{
+background:linear-gradient(135deg,#00ff9d,#00d4ff);
+color:black;
+font-weight:700;
+}
+
+.cta-buttons button:last-child{
+background:rgba(255,255,255,.05);
+color:white;
+border:1px solid rgba(255,255,255,.08);
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:1100px){
+
+
+.comparison-grid,
+.metrics-grid,
+.control-grid,
+.twin-grid{
+    grid-template-columns:1fr;
+}
+
+.workspace-header h1{
+    font-size:56px;
+}
+
+.improvement-banner h1{
+    font-size:70px;
+}
+
+.workspace-cta h2{
+    font-size:42px;
+}
+
+
+}

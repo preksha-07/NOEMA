@@ -1,0 +1,13 @@
+[
+    {
+        "actual_time_seconds": 13.2,
+        "actual_distance_mm": 840.5,
+        "actual_vibration": 18.4,
+        "execution_status": "completed"
+    },
+    {
+        "actual_time_seconds": 12.6,
+        "actual_distance_mm": 842.3,
+        "actual_vibration": 18452
+    }
+]

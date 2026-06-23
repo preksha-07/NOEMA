@@ -1,0 +1,2 @@
+{"timestamp": "2026-05-31 10:37:15.367810", "distance": 300, "turns": 8, "vibration": 50, "probability": 0.5, "risk": "LOW", "future_risk": 0.55}
+{"timestamp": "2026-05-31 10:47:11.419452", "distance": 300, "turns": 8, "vibration": 50, "probability": 0.5, "risk": "LOW", "future_risk": 0.55}

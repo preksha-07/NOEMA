@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>NOEMA Workspace</title>
+
+<link rel="stylesheet"
+      href="third.css">
+
+
+</head>
+
+<body>
+
+
+<!-- VIDEO BACKGROUND -->
+
+<div class="video-background">
+
+    <video autoplay muted loop playsinline>
+
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260508_215831_c6a8989c-d716-4d8d-8745-e972a2eec711.mp4"
+                type="video/mp4">
+
+    </video>
+
+    <div class="video-overlay"></div>
+
+</div>
+
+<!-- HEADER -->
+
+<header class="workspace-header">
+
+    <div class="header-content">
+
+        <span class="workspace-tag">
+            NOEMA Manufacturing Intelligence
+        </span>
+
+        <h1>
+            NOEMA Workspace
+        </h1>
+
+        <p>
+            Intelligent Manufacturing Execution Environment
+        </p>
+
+        <div class="status-container">
+
+            <div class="status-pill"
+            id="modeStatus">
+                Balanced Mode
+            
+            
+            </div>
+
+            <div class="status-pill">
+                System Ready
+            </div>
+
+            <div class="status-pill">
+                ESP32 Simulation
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!-- CONTROL CENTER -->
+
+<section class="control-section">
+
+    <div class="glass-card control-center">
+
+        <div class="section-heading">
+
+            <h2>
+                Optimization Command Center
+            </h2>
+
+            <p>
+                Configure geometry, optimization mode and execution.
+            </p>
+
+        </div>
+
+        <div class="control-grid">
+
+            <div class="control-group">
+
+                <label>
+                    Upload Geometry
+                </label>
+
+                <input type="file"
+                       id="imageUpload"
+                       accept=".png,.jpg,.jpeg">
+
+            </div>
+
+            <div class="control-group">
+
+                <label>
+                    Geometry
+                </label>
+
+                <select>
+
+                    <option>Custom Image</option>
+                    <option>Square</option>
+                    <option>Star</option>
+                    <option>Circle</option>
+
+                </select>
+
+            </div>
+
+            <div class="control-group">
+
+                <label>
+                    Optimization Mode
+                </label>
+
+                <div class="mode-buttons">
+
+                    <button>
+                        Speed
+                    </button>
+
+                    <button class="active-mode">
+                        Balanced
+                    </button>
+
+                    <button>
+                        Accuracy
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="action-buttons">
+
+            <button class="action-btn">
+                Generate Contours
+            </button>
+
+            <button class="action-btn">
+                Generate Paths
+            </button>
+
+            <button
+             class="action-btn"
+              id="optimizeBtn">
+
+             Run Optimization
+
+           </button>
+
+            <button class="action-btn">
+                Generate G-Code
+            </button>
+
+            <button class="action-btn"
+             id="executePlotterBtn"
+            >
+                Execute Plotter
+            </button>
+            
+       </div>
+
+       <div id="apiResults">
+
+    <p>Contours: --</p>
+
+    <p>Segments: --</p>
+
+    <p>G-Code Lines: --</p>
+
+</div>
+
+    </div>
+
+</section>
+
+<!-- COMPARISON -->
+
+<section>
+
+    <div class="section-heading center">
+
+        <h2>
+            Classical vs Optimized
+        </h2>
+
+        <p>
+            Compare manufacturing performance before and after optimization.
+        </p>
+
+    </div>
+
+    <div class="comparison-grid">
+
+        <div class="glass-card comparison-card">
+
+            <div class="comparison-header">
+
+                <h3>
+                    Classical Mathematical Model
+                </h3>
+
+                
+
+            </div>
+
+            <img
+    id="classicalImage"
+    class="path-image"
+>
+
+
+            <div class="comparison-stats">
+
+               <div>
+
+    <span>Distance</span>
+
+    <strong id="classicalDistance">
+        --
+    </strong>
+
+</div>
+
+<div>
+
+    <span>Turns</span>
+
+    <strong id="classicalTurns">
+        --
+    </strong>
+
+</div>
+
+<div>
+
+    <span>Cost</span>
+
+    <strong id="classicalCost">
+        --
+    </strong>
+
+</div>
+            </div>
+
+        </div>
+
+        <div class="glass-card comparison-card">
+
+            <div class="comparison-header">
+
+                <h3>
+                    Quantum-Based Optimized Model 
+                </h3>
+
+                
+
+            </div>
+
+            <img
+            id="optimizedImage"
+    class="path-image"
+>
+
+            <div class="comparison-stats">
+
+               
+                <div>
+
+    <span>Distance</span>
+
+    <strong id="optimizedDistance">
+        --
+    </strong>
+
+</div>
+
+<div>
+
+    <span>Turns</span>
+
+    <strong id="optimizedTurns">
+        --
+    </strong>
+
+</div>
+
+<div>
+
+    <span>Cost</span>
+
+    <strong id="optimizedCost">
+        --
+    </strong>
+
+</div>
+                
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="improvement-banner">
+
+        <h1 id="improvementPercent">
+    --
+</h1>
+
+        <p>
+            Cost Reduction Achieved
+        </p>
+
+    </div>
+
+</section>
+
+<!-- METRICS -->
+
+<section>
+
+    <div class="section-heading center">
+
+        <h2>
+            System Metrics
+        </h2>
+
+    </div>
+
+    <div class="metrics-grid">
+
+
+        
+        <div class="metric-card">
+
+    <h3>
+        Optimization Mode
+    </h3>
+
+    <p>
+        <strong id="currentMode">
+            Balanced
+        </strong>
+    </p>
+
+</div>
+
+        <div class="metric-card">
+            <h3>Risk</h3>
+            <p id="riskValue">0</p>
+        </div>
+
+        <div class="metric-card">
+            <h3>Execution Time</h3>
+            <p id="timeValue">0</p>
+        </div>
+
+        <div class="metric-card">
+            <h3>Turns</h3>
+            <p id="turnValue">0</p>
+        </div>
+
+        <div class="metric-card">
+            <h3>Prediction Error</h3>
+            <h1>
+            <span id="predictionError">
+</span></h1>
+
+ <p id="timeError">--</p>
+
+<p id="riskError">--</p>
+
+<p id="costError">--</p>
+    
+        </div>
+
+        <div class="metric-card">
+            <h3>ESP32</h3>
+            ESP32 Status:
+<span id="esp32Status">
+    Offline
+</span>
+        </div>
+
+        <div class="metric-card">
+            <h3>Plotter</h3>
+            Plotter Status:
+<span id="plotterStatus">
+    Simulation Mode
+</span>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DIGITAL TWIN -->
+
+<section>
+
+    <div class="glass-card digital-twin">
+
+        <div class="section-heading center">
+
+            <h2>
+                Digital Twin Validation
+            </h2>
+
+        </div>
+
+        <div class="twin-grid">
+
+            <div class="twin-card">
+
+                <h3>
+                    Predicted
+                </h3>
+
+                <ul>
+
+    <li>
+        Time:
+        <strong id="predictedTime">
+            --
+        </strong>
+    </li>
+
+    <li>
+        Risk:
+        <strong id="predictedRisk">
+            --
+        </strong>
+    </li>
+
+    <li>
+        Cost:
+        <strong id="predictedCost">
+            --
+        </strong>
+    </li>
+
+</ul>
+
+            </div>
+
+            <div class="twin-card">
+
+                <h3>
+                    Actual
+                </h3>
+
+                <ul>
+
+    <li>
+        Time:
+        <strong id="actualTime">
+            --
+        </strong>
+    </li>
+
+    <li>
+        Risk:
+        <strong id="actualRisk">
+            --
+        </strong>
+    </li>
+
+    <li>
+        Cost:
+        <strong id="actualCost">
+            --
+        </strong>
+    </li>
+
+    <li>
+    Vibration:
+    <strong id="actualVibration">
+        --
+    </strong>
+</li>
+
+</ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- TERMINAL -->
+
+<section>
+
+    <div class="section-heading center">
+
+        <h2>
+            Live G-Code Terminal
+        </h2>
+
+    </div>
+
+    <div class="terminal">
+
+        <div id="terminal-output">
+
+            > NOEMA TERMINAL READY
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="workspace-cta">
+
+    <h2>
+        Continue Exploring NOEMA
+    </h2>
+
+    <p>
+        Move deeper into the research architecture and optimization methodology.
+    </p>
+
+    <div class="cta-buttons">
+
+        <button onclick="resetWorkspace()">
+    Run New Optimization
+</button>
+
+        <button onclick="window.location.href='research.html'">
+            Explore Research
+        </button>
+
+        <button onclick="window.location.href='http://172.17.10.122:8000/graphs-page'">
+             View Analytics 
+        </button>
+
+    </div>
+
+</section>
+
+<script src="third.js"></script>
+
+
+</body>
+
+</html>

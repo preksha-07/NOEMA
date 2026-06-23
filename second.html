@@ -1,0 +1,689 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>NOEMA — System Preview</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- HLS -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Instrument Serif', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+      --background:#000000;
+      --foreground:#ffffff;
+    }
+
+    body{
+      background:var(--background);
+      color:var(--foreground);
+      font-family:'Inter',sans-serif;
+      -webkit-font-smoothing:antialiased;
+      letter-spacing:-0.01em;
+      overflow-x:hidden;
+    }
+
+    section{
+      position:relative;
+      padding:140px 8%;
+    }
+
+    /* =====================================================
+       GLASS
+    ===================================================== */
+
+    .liquid-glass{
+      background:rgba(255,255,255,0.01);
+      background-blend-mode:luminosity;
+      backdrop-filter:blur(4px);
+      -webkit-backdrop-filter:blur(4px);
+      border:none;
+      box-shadow:inset 0 1px 1px rgba(255,255,255,0.1);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .liquid-glass::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      padding:1.4px;
+
+      background:linear-gradient(
+        180deg,
+        rgba(255,255,255,0.45) 0%,
+        rgba(255,255,255,0.15) 20%,
+        rgba(255,255,255,0) 40%,
+        rgba(255,255,255,0) 60%,
+        rgba(255,255,255,0.15) 80%,
+        rgba(255,255,255,0.45) 100%
+      );
+
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+      -webkit-mask-composite:xor;
+      mask-composite:exclude;
+
+      pointer-events:none;
+    }
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero-section{
+      position:relative;
+      height:100vh;
+      overflow:hidden;
+      background:black;
+    }
+
+    .hero-video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:1;
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+
+      background:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.75)
+      );
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:10;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:0 24px;
+    }
+
+    .hero-wrapper{
+      max-width:1200px;
+      width:100%;
+    }
+
+    .hero-title{
+      font-family:'Instrument Serif',serif;
+
+      font-size:clamp(4rem,9vw,9rem);
+
+      font-weight:400;
+
+      line-height:0.92;
+
+      letter-spacing:-0.05em;
+
+      background:linear-gradient(
+        to bottom,
+        rgba(255,255,255,1),
+        rgba(255,255,255,0.92),
+        rgba(255,255,255,0.72)
+      );
+
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+
+      animation:fadeUp 1.2s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+
+    .hero-sub{
+      margin-top:34px;
+
+      max-width:760px;
+
+      margin-left:auto;
+      margin-right:auto;
+
+      color:#b0b0b0;
+
+      line-height:1.9;
+
+      font-size:18px;
+
+      opacity:0;
+
+      transform:translateY(30px);
+
+      animation:fadeUp 1.2s cubic-bezier(0.16,1,0.3,1) forwards;
+
+      animation-delay:0.3s;
+    }
+
+    /* =====================================================
+       SECTION 1
+    ===================================================== */
+
+    .preview-wrapper{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .background-glow{
+      position:absolute;
+
+      width:900px;
+      height:900px;
+
+      border-radius:50%;
+
+      background:
+      radial-gradient(circle,#8b5cf6,transparent);
+
+      opacity:0.12;
+
+      left:50%;
+      top:50%;
+
+      transform:translate(-50%,-50%);
+    }
+
+    .section-header{
+      text-align:center;
+      margin-bottom:80px;
+    }
+
+    .section-tag{
+      color:#00e5ff;
+      letter-spacing:3px;
+      font-size:12px;
+      margin-bottom:18px;
+    }
+
+    .section-header h2{
+      font-size:72px;
+      font-weight:300;
+      margin-bottom:25px;
+      line-height:1.1;
+    }
+
+    .section-description{
+      max-width:760px;
+      margin:auto;
+      line-height:1.9;
+      color:#a1a1aa;
+      font-size:18px;
+    }
+
+    /* =====================================================
+       FEATURES
+    ===================================================== */
+
+    .features-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:35px;
+    }
+
+    .feature-card{
+      position:relative;
+
+      padding:50px;
+
+      border-radius:35px;
+
+      background:rgba(255,255,255,0.03);
+
+      border:1px solid rgba(255,255,255,0.08);
+
+      overflow:hidden;
+
+      transition:0.5s;
+    }
+
+    .feature-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .feature-glow{
+      position:absolute;
+
+      width:300px;
+      height:300px;
+
+      border-radius:50%;
+
+      background:
+      radial-gradient(circle,#8b5cf6,transparent);
+
+      top:-120px;
+      right:-120px;
+
+      opacity:0.15;
+    }
+
+    .feature-card h3{
+      font-size:34px;
+      margin-bottom:25px;
+      font-weight:400;
+      position:relative;
+      z-index:2;
+    }
+
+    .feature-card p{
+      color:#a1a1aa;
+      line-height:1.9;
+      font-size:17px;
+      position:relative;
+      z-index:2;
+    }
+
+    /* =====================================================
+       FINAL CTA
+    ===================================================== */
+
+    .final-cta{
+      text-align:center;
+      overflow:hidden;
+    }
+
+    .cta-glow{
+      position:absolute;
+
+      width:700px;
+      height:700px;
+
+      left:50%;
+      top:50%;
+
+      transform:translate(-50%,-50%);
+
+      background:
+      radial-gradient(circle,#8b5cf6,transparent);
+
+      opacity:0.15;
+    }
+
+    .final-cta h2{
+      font-size:82px;
+      font-weight:300;
+      margin-bottom:30px;
+      position:relative;
+      z-index:2;
+      line-height:1;
+    }
+
+    .final-cta p{
+      max-width:760px;
+      margin:auto;
+      line-height:1.9;
+      color:#a1a1aa;
+      margin-bottom:50px;
+      font-size:18px;
+      position:relative;
+      z-index:2;
+    }
+
+    .cta-buttons{
+      display:flex;
+      justify-content:center;
+      gap:25px;
+      position:relative;
+      z-index:2;
+      flex-wrap:wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn{
+      padding:20px 42px;
+      border-radius:999px;
+      border:none;
+      cursor:pointer;
+      font-size:16px;
+      transition:0.4s;
+    }
+
+    .primary-btn{
+      background:
+      linear-gradient(to right,#00ff9d,#00e5ff);
+
+      color:black;
+      font-weight:bold;
+    }
+
+    .secondary-btn{
+      background:rgba(255,255,255,0.05);
+      color:white;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover{
+      transform:translateY(-5px);
+    }
+
+    /* =====================================================
+       ANIMATION
+    ===================================================== */
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media(max-width:1100px){
+
+      .features-grid{
+        grid-template-columns:1fr;
+      }
+
+      .section-header h2{
+        font-size:48px;
+      }
+
+      .final-cta h2{
+        font-size:54px;
+      }
+
+    }
+
+    @media(max-width:768px){
+
+      .hero-title{
+        font-size:4rem;
+      }
+
+      .section-header h2{
+        font-size:42px;
+      }
+
+      .feature-card{
+        padding:36px;
+      }
+
+      .feature-card h3{
+        font-size:28px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- =====================================================
+       HERO
+  ===================================================== -->
+
+  <section class="hero-section">
+
+    <!-- VIDEO -->
+    <video
+      id="hero-video"
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+    ></video>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+      <div class="hero-wrapper">
+
+        <h1 class="hero-title">
+          Quantum-Inspired
+          <br>
+          Toolpath Intelligence
+        </h1>
+
+        <p class="hero-sub">
+          Real-time digital twin optimization for intelligent manufacturing systems.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =====================================================
+       SECTION 1
+  ===================================================== -->
+
+  <section class="preview-wrapper">
+
+    <div class="background-glow"></div>
+
+    <div class="section-header">
+
+      <p class="section-tag">
+        INTELLIGENT WORKFLOW
+      </p>
+
+      <h2>
+        Real-Time Manufacturing Intelligence
+      </h2>
+
+      <p class="section-description">
+
+        NOEMA transforms geometry into optimized machine execution
+        using quantum-inspired convergence and digital twin validation.
+
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- =====================================================
+       SECTION 2
+  ===================================================== -->
+
+  <section>
+
+    <div class="section-header">
+
+      <p class="section-tag">
+        CORE TECHNOLOGIES
+      </p>
+
+      <h2>
+        Built For Intelligent Manufacturing
+      </h2>
+
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+
+        <div class="feature-glow"></div>
+
+        <h3>
+          Quantum-Inspired Optimization
+        </h3>
+
+        <p>
+
+          Advanced convergence-driven path exploration for intelligent
+          manufacturing execution and adaptive optimization.
+
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <div class="feature-glow"></div>
+
+        <h3>
+          Digital Twin Prediction
+        </h3>
+
+        <p>
+
+          Real-time prediction and validation of manufacturing
+          behavior before physical execution begins.
+
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <div class="feature-glow"></div>
+
+        <h3>
+          Adaptive Cost Intelligence
+        </h3>
+
+        <p>
+
+          Dynamic risk-aware cost functions minimize execution
+          time, motion instability, and unnecessary traversal.
+
+        </p>
+
+      </div>
+
+      <div class="feature-card">
+
+        <div class="feature-glow"></div>
+
+        <h3>
+          Real-Time Toolpath Execution
+        </h3>
+
+        <p>
+
+          Seamless transition from image geometry to optimized
+          G-code generation and hardware execution.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =====================================================
+       FINAL CTA
+  ===================================================== -->
+
+  <section class="final-cta">
+
+    <div class="cta-glow"></div>
+
+    <h2>
+      Enter The NOEMA Workspace
+    </h2>
+
+    <p>
+
+      Experience intelligent manufacturing optimization through
+      real-time digital twin simulation and adaptive toolpath intelligence.
+
+    </p>
+
+    <div class="cta-buttons">
+
+      <button
+        class="primary-btn"
+        onclick="window.location.href='third.html'"
+      >
+        Launch Workspace
+      </button>
+
+      <button
+        class="secondary-btn"
+        onclick="window.location.href='research.html'"
+      >
+        Explore Research
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- =====================================================
+       HLS VIDEO
+  ===================================================== -->
+
+  <script>
+
+    const video = document.getElementById('hero-video');
+
+    const videoSrc =
+      'https://stream.mux.com/kimF2ha9zLrX64H00UgLGPflCzNtl1T0215MlAmeOztv8.m3u8';
+
+    if (video.canPlayType('application/vnd.apple.mpegurl')) {
+
+      video.src = videoSrc;
+
+    } else if (Hls.isSupported()) {
+
+      const hls = new Hls();
+
+      hls.loadSource(videoSrc);
+
+      hls.attachMedia(video);
+
+    }
+
+  </script>
+
+</body>
+</html>

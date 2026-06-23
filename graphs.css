@@ -1,0 +1,613 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:
+Inter,
+Segoe UI,
+sans-serif;
+
+background:#0A0A0B;
+
+color:white;
+
+overflow-x:hidden;
+
+
+}
+
+/* ====================================
+VIDEO BACKGROUND
+==================================== */
+
+.video-background{
+
+
+position:fixed;
+
+inset:0;
+
+z-index:-3;
+
+overflow:hidden;
+
+
+}
+
+.video-background video{
+
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+
+}
+
+.video-overlay{
+
+position:absolute;
+
+inset:0;
+
+background:
+rgba(10,10,11,0.88);
+
+backdrop-filter:
+blur(6px);
+
+
+}
+
+/* ====================================
+COMMON
+==================================== */
+
+section{
+
+
+padding:
+90px 8%;
+
+
+}
+
+.glass-card{
+
+
+position:relative;
+
+background:
+rgba(255,255,255,0.03);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+backdrop-filter:
+blur(18px);
+
+border-radius:32px;
+
+overflow:hidden;
+
+
+}
+
+.glass-card::before{
+
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:
+linear-gradient(
+    135deg,
+    rgba(255,255,255,0.06),
+    transparent
+);
+
+pointer-events:none;
+
+
+}
+
+/* ====================================
+HEADER
+==================================== */
+
+.analytics-header{
+
+
+min-height:70vh;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+padding:0 8%;
+
+
+}
+
+.analytics-tag{
+
+
+padding:
+12px 20px;
+
+border-radius:999px;
+
+background:
+rgba(255,255,255,0.05);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+color:#00ff9d;
+
+margin-bottom:25px;
+
+
+}
+
+.analytics-header h1{
+
+
+font-size:82px;
+
+font-weight:300;
+
+margin-bottom:20px;
+
+
+}
+
+.analytics-header p{
+
+
+color:#bdbdc7;
+
+max-width:850px;
+
+line-height:1.8;
+
+
+}
+
+/* ====================================
+SESSION SUMMARY
+==================================== */
+
+.session-summary{
+
+
+display:grid;
+
+grid-template-columns:
+repeat(4,1fr);
+
+gap:24px;
+
+
+}
+
+.summary-card{
+
+
+background:
+rgba(255,255,255,0.04);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+border-radius:24px;
+
+padding:28px;
+
+text-align:center;
+
+
+}
+
+.summary-card h3{
+
+
+color:#9ca3af;
+
+margin-bottom:12px;
+
+font-size:15px;
+
+
+}
+
+.summary-card p{
+
+
+font-size:30px;
+
+font-weight:700;
+
+
+}
+
+/* ====================================
+HERO METRIC
+==================================== */
+
+.hero-improvement{
+
+
+text-align:center;
+
+
+}
+
+.hero-improvement h1{
+
+
+font-size:140px;
+
+line-height:1;
+
+font-weight:700;
+
+background:
+linear-gradient(
+    135deg,
+    #00ff9d,
+    #00d4ff
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+
+}
+
+.hero-improvement h2{
+
+
+margin-top:20px;
+
+font-size:34px;
+
+font-weight:400;
+
+
+}
+
+.hero-improvement p{
+
+
+margin-top:20px;
+
+color:#bdbdc7;
+
+max-width:700px;
+
+margin-left:auto;
+margin-right:auto;
+
+
+}
+
+/* ====================================
+KPI GRID
+==================================== */
+
+.kpi-grid{
+
+
+display:grid;
+
+grid-template-columns:
+repeat(4,1fr);
+
+gap:24px;
+
+
+}
+
+.kpi-card{
+
+
+position:relative;
+
+border-radius:30px;
+
+padding:30px;
+
+background:
+rgba(255,255,255,0.04);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+text-align:center;
+
+
+}
+
+.kpi-card h3{
+
+
+color:#9ca3af;
+
+margin-bottom:14px;
+
+
+}
+
+.kpi-card h2{
+
+
+font-size:42px;
+
+color:#00ff9d;
+
+
+}
+
+/* ====================================
+GRAPHS
+==================================== */
+
+.graph-card{
+
+
+padding:35px;
+
+}
+
+.graph-card h2{
+
+
+margin-bottom:25px;
+
+font-weight:400;
+
+
+}
+
+.graph-card canvas{
+
+
+width:100%;
+
+height:420px;
+
+
+}
+
+/* ====================================
+COMPARISON GRID
+==================================== */
+
+.comparison-grid{
+
+
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:24px;
+
+
+}
+
+/* ====================================
+DIGITAL TWIN
+==================================== */
+
+.twin-card{
+
+
+padding:35px;
+
+
+}
+
+.twin-card h2{
+
+
+margin-bottom:25px;
+
+
+}
+
+/* ====================================
+EXPORT PANEL
+==================================== */
+
+.export-panel{
+
+
+padding:35px;
+
+text-align:center;
+
+
+}
+
+.export-panel h2{
+
+
+margin-bottom:30px;
+
+
+}
+
+.export-buttons{
+
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+
+}
+
+.export-buttons button{
+
+
+padding:
+16px 28px;
+
+border:none;
+
+border-radius:999px;
+
+cursor:pointer;
+
+background:
+rgba(255,255,255,0.06);
+
+color:white;
+
+transition:0.3s;
+
+
+}
+
+.export-buttons button:hover{
+
+
+background:
+rgba(255,255,255,0.12);
+
+
+}
+
+/* ====================================
+TIMESTAMP
+==================================== */
+
+.optimization-info{
+
+
+text-align:center;
+
+
+}
+
+.optimization-info h3{
+
+
+margin-bottom:12px;
+
+color:#9ca3af;
+
+}
+
+.optimization-info p{
+
+
+font-size:18px;
+
+
+}
+
+/* ====================================
+BACK BUTTON
+==================================== */
+
+.back-section{
+
+
+text-align:center;
+
+
+}
+
+.back-button{
+
+
+padding:
+18px 32px;
+
+border:none;
+
+cursor:pointer;
+
+border-radius:999px;
+
+background:
+linear-gradient(
+    135deg,
+    #00ff9d,
+    #00d4ff
+);
+
+color:black;
+
+font-weight:700;
+
+font-size:16px;
+
+
+}
+
+/* ====================================
+RESPONSIVE
+==================================== */
+
+@media(max-width:1100px){
+
+
+.session-summary,
+.kpi-grid,
+.comparison-grid{
+
+    grid-template-columns:
+    1fr;
+}
+
+.analytics-header h1{
+
+    font-size:54px;
+}
+
+.hero-improvement h1{
+
+    font-size:90px;
+}
+
+
+}
+
+.graph-image{
+
+width:100%;
+
+height:auto;
+
+display:block;
+
+border-radius:20px;
+
+}

@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Digital Twin Optimization Platform</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts for Futuristic Tech Aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617;
+            overflow-x: hidden;
+        }
+        .font-tech {
+            font-family: 'Orbitron', sans-serif;
+        }
+        /* Custom Glassmorphism Styles */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .neon-border-green {
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
+        .neon-border-red {
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="text-slate-200 antialiased relative">
+
+    <!-- BACKGROUND NEURAL GRID & PARTICLES CANVAS -->
+    <canvas id="neuralGrid" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-40"></canvas>
+
+    <!-- SECTION 1 — HERO SECTION -->
+    <section class="min-h-screen flex flex-col justify-center items-center px-6 relative border-b border-slate-900 overflow-hidden">
+        <div class="absolute inset-0 bg-radial from-emerald-500/10 via-transparent to-transparent pointer-events-none filter blur-3xl transform -translate-y-1/3"></div>
+        
+        <div class="max-w-5xl text-center z-10 space-y-8 mt-12">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-950/20 text-emerald-400 text-xs tracking-wider font-tech uppercase animate-pulse">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> System Diagnostics: Operational
+            </div>
+            
+            <h1 class="font-tech text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-200 to-slate-500 leading-tight">
+                AI-Driven Digital Twin<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Optimization Platform</span>
+            </h1>
+            
+            <p class="text-slate-400 max-w-2xl mx-auto text-base sm:text-lg lg:text-xl font-light leading-relaxed">
+                Constraint-aware adaptive toolpath optimization with predictive digital twin validation. Streamline autonomous manufacturing infrastructure down to individual execution matrices.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+                <a href="#simulation" class="w-full sm:w-auto px-8 py-4 rounded-xl font-tech font-semibold text-sm tracking-wide text-slate-950 bg-gradient-to-r from-emerald-400 to-cyan-400 hover:from-emerald-300 hover:to-cyan-300 transition-all duration-300 shadow-[0_0_25px_rgba(52,211,153,0.3)] hover:shadow-[0_0_35px_rgba(52,211,153,0.5)] transform hover:-translate-y-0.5 text-center">
+                    Run Live Simulation
+                </a>
+                <a href="#architecture" class="w-full sm:w-auto px-8 py-4 rounded-xl font-tech font-semibold text-sm tracking-wide bg-slate-900/60 border border-slate-800 hover:border-slate-700 hover:bg-slate-800/80 transition-all duration-300 glass-panel text-center">
+                    Explore System
+                </a>
+            </div>
+        </div>
+
+        <!-- Animated Rotating Wireframe / Visual in Hero -->
+        <div class="w-full max-w-lg aspect-square mt-12 relative opacity-60 pointer-events-none">
+            <div class="absolute inset-0 border border-dashed border-emerald-500/20 rounded-full animate-[spin_60s_linear_infinite]"></div>
+            <div class="absolute inset-8 border border-slate-800 rounded-full animate-[spin_40s_linear_infinite_reverse]"></div>
+            <div class="absolute inset-16 border border-dashed border-cyan-500/20 rounded-full animate-[spin_20s_linear_infinite]"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-32 h-32 bg-emerald-500/5 rounded-full filter blur-xl animate-ping"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2 — PROBLEM STATEMENT -->
+    <section class="py-24 px-6 max-w-7xl mx-auto relative border-b border-slate-900">
+        <div class="text-center space-y-4 mb-16">
+            <h2 class="font-tech text-xs tracking-widest text-emerald-400 font-semibold uppercase">The Challenge</h2>
+            <p class="font-tech text-3xl font-bold">Legacy Operational Constraints</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Card 1 -->
+            <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-red-500/30 transition-all duration-500 transform hover:-translate-y-1">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-500/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                <div class="font-tech text-red-400 text-xs mb-4 font-semibold tracking-wider uppercase">// 01. Inefficient Paths</div>
+                <h3 class="text-xl font-bold mb-2">High Latency Routines</h3>
+                <p class="text-slate-400 text-sm font-light">Sub-optimal path mapping patterns significantly scale up production execution runtime parameters.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-red-500/30 transition-all duration-500 transform hover:-translate-y-1">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-500/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                <div class="font-tech text-red-400 text-xs mb-4 font-semibold tracking-wider uppercase">// 02. Sharp Turns</div>
+                <h3 class="text-xl font-bold mb-2">Mechanical Instability</h3>
+                <p class="text-slate-400 text-sm font-light">Abrupt axis directional modifications generate spikes in mechanical jitter and surface vibrations.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-red-500/30 transition-all duration-500 transform hover:-translate-y-1">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-500/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                <div class="font-tech text-red-400 text-xs mb-4 font-semibold tracking-wider uppercase">// 03. Unoptimized Execution</div>
+                <h3 class="text-xl font-bold mb-2">Energy Overconsumption</h3>
+                <p class="text-slate-400 text-sm font-light">Unstructured motor configurations draw baseline current overheads far exceeding baseline profiles.</p>
+            </div>
+            <!-- Card 4 -->
+            <div class="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-red-500/30 transition-all duration-500 transform hover:-translate-y-1">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-500/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                <div class="font-tech text-red-400 text-xs mb-4 font-semibold tracking-wider uppercase">// 04. Static Systems</div>
+                <h3 class="text-xl font-bold mb-2">Zero System Adaptation</h3>
+                <p class="text-slate-400 text-sm font-light">Legacy workflows lack algorithmic feedback loops to organically learn, adapt, or fine-tune models.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3 — SYSTEM ARCHITECTURE -->
+    <section id="architecture" class="py-24 px-6 bg-slate-950/40 border-b border-slate-900 relative">
+        <div class="text-center space-y-4 mb-16">
+            <h2 class="font-tech text-xs tracking-widest text-cyan-400 font-semibold uppercase">Data Pipeline</h2>
+            <p class="font-tech text-3xl font-bold">System Architecture</p>
+        </div>
+
+        <div class="max-w-6xl mx-auto overflow-x-auto pb-8 scrollbar-thin">
+            <div class="flex items-start justify-between min-w-[1000px] gap-4 px-4 relative">
+                <!-- SVG linking line behind items -->
+                <div class="absolute top-10 left-12 right-12 h-0.5 bg-gradient-to-r from-emerald-500/20 via-cyan-500/40 to-emerald-500/20 -z-10"></div>
+                
+                <!-- Stage 1 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-2xl glass-panel flex items-center justify-center mb-4 group-hover:border-cyan-400/50 transition-all duration-300 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+                        <span class="font-tech text-xl font-bold text-cyan-400">01</span>
+                    </div>
+                    <h4 class="font-tech text-sm font-bold mb-1">Input Shape</h4>
+                    <p class="text-xs text-slate-400 font-light px-2">Initial processing of target vector metrics</p>
+                </div>
+                <!-- Stage 2 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-2xl glass-panel flex items-center justify-center mb-4 group-hover:border-cyan-400/50 transition-all duration-300 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+                        <span class="font-tech text-xl font-bold text-cyan-400">02</span>
+                    </div>
+                    <h4 class="font-tech text-sm font-bold mb-1">Multi-path Gen</h4>
+                    <p class="text-xs text-slate-400 font-light px-2">Parallel calculations of potential avenues</p>
+                </div>
+                <!-- Stage 3 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-2xl glass-panel flex items-center justify-center mb-4 group-hover:border-emerald-400/50 transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                        <span class="font-tech text-xl font-bold text-emerald-400">03</span>
+                    </div>
+                    <h4 class="font-tech text-sm font-bold mb-1">Constraint Opt</h4>
+                    <p class="text-xs text-slate-400 font-light px-2">Filtering mechanics via boundary variables</p>
+                </div>
+                <!-- Stage 4 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-2xl glass-panel flex items-center justify-center mb-4 group-hover:border-cyan-400/50 transition-all duration-300 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+                        <span class="font-tech text-xl font-bold text-cyan-400">04</span>
+                    </div>
+                    <h4 class="font-tech text-sm font-bold mb-1">Digital Twin</h4>
+                    <p class="text-xs text-slate-400 font-light px-2">Predictive analytics simulation validation</p>
+                </div>
+                <!-- Stage 5 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-2xl glass-panel flex items-center justify-center mb-4 group-hover:border-emerald-400/50 transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                        <span class="font-tech text-xl font-bold text-emerald-400">05</span>
+                    </div>
+                    <h4 class="font-tech text-sm font-bold mb-1">Learning Engine</h4>
+                    <p class="text-xs text-slate-400 font-light px-2">AI weights tuning via synthetic modeling</p>
+                </div>
+                <!-- Stage 6 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-2xl glass-panel flex items-center justify-center mb-4 group-hover:border-cyan-400/50 transition-all duration-300 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+                        <span class="font-tech text-xl font-bold text-cyan-400">06</span>
+                    </div>
+                    <h4 class="font-tech text-sm font-bold mb-1">Machine Execution</h4>
+                    <p class="text-xs text-slate-400 font-light px-2">Transformation into real-time physical G-Code</p>
+                </div>
+                <!-- Stage 7 -->
+                <div class="flex-1 text-center group">
+                    <div class="w-20 h-20 mx-auto rounded-2xl glass-panel flex items-center justify-center mb-4 group-hover:border-emerald-400/50 transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                        <span class="font-tech text-xl font-bold text-emerald-400">07</span>
+                    </div>
+                    <h4 class="font-tech text-sm font-bold mb-1">Feedback Adaptation</h4>
+                    <p class="text-xs text-slate-400 font-light px-2">Continuous runtime error mitigation looping</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4 — LIVE OPTIMIZATION SIMULATION -->
+    <section id="simulation" class="py-24 px-6 max-w-7xl mx-auto border-b border-slate-900">
+        <div class="text-center space-y-4 mb-12">
+            <h2 class="font-tech text-xs tracking-widest text-emerald-400 font-semibold uppercase">Interactive Sandbox</h2>
+            <p class="font-tech text-3xl font-bold">Live Optimization Simulation</p>
+        </div>
+
+        <!-- Controller Bar -->
+        <div class="glass-panel p-6 rounded-2xl mb-8 flex flex-col lg:flex-row gap-6 justify-between items-stretch lg:items-center">
+            <div class="flex flex-wrap items-center gap-6">
+                <!-- Shape Selector -->
+                <div class="space-y-2">
+                    <label class="block font-tech text-xs text-slate-400 uppercase tracking-wider">Target Profile Geometries</label>
+                    <div class="inline-flex rounded-xl bg-slate-950 p-1 border border-slate-800" id="shapeSelector">
+                        <button onclick="setShape('square')" class="px-4 py-2 rounded-lg font-tech text-xs font-semibold transition-all shape-btn bg-emerald-500 text-slate-950" data-shape="square">Square</button>
+                        <button onclick="setShape('circle')" class="px-4 py-2 rounded-lg font-tech text-xs font-semibold transition-all shape-btn text-slate-400 hover:text-slate-200" data-shape="circle">Circle</button>
+                        <button onclick="setShape('star')" class="px-4 py-2 rounded-lg font-tech text-xs font-semibold transition-all shape-btn text-slate-400 hover:text-slate-200" data-shape="star">Star</button>
+                        <button onclick="setShape('chessboard')" class="px-4 py-2 rounded-lg font-tech text-xs font-semibold transition-all shape-btn text-slate-400 hover:text-slate-200" data-shape="chessboard">Chessboard</button>
+                    </div>
+                </div>
+
+                <!-- Mode Selector -->
+                <div class="space-y-2">
+                    <label class="block font-tech text-xs text-slate-400 uppercase tracking-wider">Optimization Target Profile</label>
+                    <div class="inline-flex rounded-xl bg-slate-950 p-1 border border-slate-800" id="modeSelector">
+                        <button onclick="setMode('speed')" class="px-4 py-2 rounded-lg font-tech text-xs font-semibold transition-all mode-btn bg-cyan-500 text-slate-950" data-mode="speed">Speed</button>
+                        <button onclick="setMode('accuracy')" class="px-4 py-2 rounded-lg font-tech text-xs font-semibold transition-all mode-btn text-slate-400 hover:text-slate-200" data-mode="accuracy">Accuracy</button>
+                        <button onclick="setMode('balanced')" class="px-4 py-2 rounded-lg font-tech text-xs font-semibold transition-all mode-btn text-slate-400 hover:text-slate-200" data-mode="balanced">Balanced</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-end">
+                <button onclick="runSimulation()" class="w-full lg:w-auto px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-tech font-bold text-sm rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]">
+                    EXECUTE ANALYSIS MODEL
+                </button>
+            </div>
+        </div>
+
+        <!-- Split Screen Display Panels -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Left Panel: Classical -->
+            <div class="glass-panel p-6 rounded-2xl relative overflow-hidden flex flex-col">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-tech text-sm font-bold text-red-400 tracking-wider flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> CLASSICAL MATHEMATICAL MODEL
+                    </span>
+                    <span class="text-xs text-slate-500 font-mono" id="classicalStatus">Ready</span>
+                </div>
+                <div class="bg-slate-950/60 rounded-xl aspect-square w-full relative border border-slate-900 flex items-center justify-center overflow-hidden">
+                    <canvas id="classicalCanvas" class="w-full h-full"></canvas>
+                </div>
+            </div>
+
+            <!-- Right Panel: Optimized -->
+            <div class="glass-panel p-6 rounded-2xl relative overflow-hidden flex flex-col">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-tech text-sm font-bold text-emerald-400 tracking-wider flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> AI ADAPTIVE OPTIMIZED MODEL
+                    </span>
+                    <span class="text-xs text-slate-500 font-mono" id="optimizedStatus">Ready</span>
+                </div>
+                <div class="bg-slate-950/60 rounded-xl aspect-square w-full relative border border-slate-900 flex items-center justify-center overflow-hidden">
+                    <canvas id="optimizedCanvas" class="w-full h-full"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real-Time Metrics Display Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="glass-panel p-6 rounded-xl border border-red-500/10">
+                <div class="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                        <div class="text-xs font-tech text-slate-500 uppercase">Compute Cost</div>
+                        <div class="text-2xl font-tech font-bold text-slate-300 mt-1" id="m-c-cost">2704</div>
+                    </div>
+                    <div>
+                        <div class="text-xs font-tech text-slate-500 uppercase">Structural Risk</div>
+                        <div class="text-2xl font-tech font-bold text-slate-300 mt-1" id="m-c-risk">20</div>
+                    </div>
+                    <div>
+                        <div class="text-xs font-tech text-slate-500 uppercase">Execution Time</div>
+                        <div class="text-2xl font-tech font-bold text-slate-300 mt-1" id="m-c-time">35s</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 rounded-xl border border-emerald-500/20 shadow-[0_0_20px_rgba(16,185,129,0.05)]">
+                <div class="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                        <div class="text-xs font-tech text-slate-400 uppercase">Optimized Cost</div>
+                        <div class="text-2xl font-tech font-bold text-emerald-400 mt-1" id="m-o-cost">461</div>
+                    </div>
+                    <div>
+                        <div class="text-xs font-tech text-slate-400 uppercase">Optimized Risk</div>
+                        <div class="text-2xl font-tech font-bold text-emerald-400 mt-1" id="m-o-risk">3</div>
+                    </div>
+                    <div>
+                        <div class="text-xs font-tech text-slate-400 uppercase">Optimized Time</div>
+                        <div class="text-2xl font-tech font-bold text-emerald-400 mt-1" id="m-o-time">12s</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5 & 6 — DIGITAL TWIN & SELF-LEARNING ENGINE -->
+    <section class="py-24 px-6 max-w-7xl mx-auto border-b border-slate-900 grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Section 5: Digital Twin -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between space-y-8">
+            <div class="space-y-2">
+                <h2 class="font-tech text-xs tracking-widest text-cyan-400 font-semibold uppercase">// Diagnostic Module 05</h2>
+                <p class="font-tech text-2xl font-bold">Predictive Digital Twin Validation</p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-slate-950/50 p-4 rounded-xl border border-slate-900">
+                        <span class="text-xs text-slate-500 block font-tech uppercase">Twin Prediction Error</span>
+                        <span class="text-3xl font-tech font-bold text-cyan-400 mt-1 block">4.2%</span>
+                    </div>
+                    <div class="bg-slate-950/50 p-4 rounded-xl border border-slate-900">
+                        <span class="text-xs text-slate-500 block font-tech uppercase">Confidence Interval</span>
+                        <span class="text-3xl font-tech font-bold text-slate-300 mt-1 block">95.8%</span>
+                    </div>
+                </div>
+
+                <!-- Simulation Line Chart Mockup via Styled Divs -->
+                <div class="h-44 w-full bg-slate-950/80 rounded-xl border border-slate-900 p-4 flex flex-col justify-between relative overflow-hidden">
+                    <div class="flex justify-between items-center text-[10px] font-mono text-slate-600">
+                        <span>MODEL VARIATION TRENDS</span>
+                        <div class="flex gap-4">
+                            <span class="text-cyan-400">● Prediction</span>
+                            <span class="text-emerald-400">● Actual</span>
+                        </div>
+                    </div>
+                    <!-- Decorative Graphic lines -->
+                    <div class="absolute inset-x-0 bottom-12 h-20 opacity-30 flex items-end">
+                        <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <path d="M0,80 Q25,20 50,60 T100,10" fill="none" stroke="#06b6d4" stroke-width="2" stroke-dasharray="2 2"></path>
+                            <path d="M0,82 Q25,23 50,58 T100,12" fill="none" stroke="#10b981" stroke-width="2"></path>
+                        </svg>
+                    </div>
+                    <div class="border-t border-slate-900 pt-2 flex justify-between text-[10px] font-mono text-slate-600">
+                        <span>00:00</span>
+                        <span>00:15</span>
+                        <span>00:30</span>
+                        <span>00:45</span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-sm text-slate-400 font-light leading-relaxed">
+                The platform runs a synchronized background simulation mapping out physical stress tolerances, thermal displacement variables, and geometric path drift coordinates ahead of physical execution.
+            </p>
+        </div>
+
+        <!-- Section 6: Self-Learning Engine -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between space-y-8">
+            <div class="space-y-2">
+                <h2 class="font-tech text-xs tracking-widest text-emerald-400 font-semibold uppercase">// Diagnostic Module 06</h2>
+                <p class="font-tech text-2xl font-bold">Autonomous Adaptation Loop</p>
+            </div>
+
+            <!-- Loop Animation Block -->
+            <div class="py-6 flex flex-col items-center justify-center relative">
+                <div class="w-48 h-48 rounded-full border border-dashed border-emerald-500/20 flex items-center justify-center animate-[spin_30s_linear_infinite] relative">
+                    <div class="absolute -top-2 left-1/2 w-4 h-4 rounded-full bg-emerald-400 shadow-[0_0_10px_#10b981]"></div>
+                    <div class="absolute -bottom-2 left-1/2 w-4 h-4 rounded-full bg-cyan-400 shadow-[0_0_10px_#06b6d4]"></div>
+                </div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center space-y-1">
+                    <span class="text-xs font-mono text-slate-500 uppercase">Weight Modulation</span>
+                    <span class="text-base font-tech font-bold text-emerald-400">Risk Matrix: 1.2 → 1.8</span>
+                    <span class="text-[10px] font-mono text-slate-400 animate-pulse bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-900/40">Accuracy Tuning Active</span>
+                </div>
+            </div>
+
+            <div class="space-y-3 font-mono text-xs bg-slate-950/80 p-4 rounded-xl border border-slate-900 text-slate-400">
+                <div class="flex gap-2"><span class="text-emerald-500">✔</span> [PREDICT] Framework coordinates generated</div>
+                <div class="flex gap-2"><span class="text-emerald-500">✔</span> [EXECUTE] Hardware sequence compiled</div>
+                <div class="flex gap-2"><span class="text-emerald-500">✔</span> [COMPARE] Tolerance deviation analyzed</div>
+                <div class="flex gap-2"><span class="text-emerald-500">✔</span> [LEARN] Neural network backpropagation step executed</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7 & 8 — G-CODE & HARDWARE INTEGRATION -->
+    <section class="py-24 px-6 max-w-7xl mx-auto border-b border-slate-900 grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Section 7: G-Code -->
+        <div class="space-y-6 flex flex-col justify-between">
+            <div class="space-y-2">
+                <h2 class="font-tech text-xs tracking-widest text-cyan-400 font-semibold uppercase">// Operational Module 07</h2>
+                <p class="font-tech text-2xl font-bold">Machine Instruction Translation</p>
+                <p class="text-slate-400 text-sm font-light">Optimized runtime profiles are translated down directly into standard clean machine instructions.</p>
+            </div>
+
+            <div class="bg-slate-950 rounded-xl p-5 border border-slate-900 font-mono text-xs text-emerald-400 space-y-2 h-64 overflow-y-auto relative shadow-inner">
+                <div class="absolute top-3 right-3 text-[10px] text-slate-600 font-tech">LIVE MONITOR</div>
+                <div>G0 X12.404 Y15.921 Z0.500 F3000 <span class="text-slate-600">; Init adaptive entry</span></div>
+                <div class="animate-pulse">G1 X14.892 Y22.110 Z-0.120 F1800 <span class="text-slate-600">; Spline trajectory translation</span></div>
+                <div>G1 X18.331 Y31.004 Z-0.120 F2400 <span class="text-slate-600">; Optimization algorithm active</span></div>
+                <div>G1 X22.012 Y34.551 Z-0.120 F2400</div>
+                <div>G1 X29.449 Y38.102 Z-0.120 F3000</div>
+                <div>M05 <span class="text-slate-600">; Loop execution end cycle</span></div>
+            </div>
+        </div>
+
+        <!-- Section 8: Hardware Integration -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between space-y-6">
+            <div class="space-y-2">
+                <h2 class="font-tech text-xs tracking-widest text-emerald-400 font-semibold uppercase">// Operational Module 08</h2>
+                <p class="font-tech text-2xl font-bold">Physical Edge Deployment</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 text-xs font-mono">
+                <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-900"><span class="text-cyan-400 font-bold block mb-1">MCU Nodes</span> ESP32 Main Core Architecture</div>
+                <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-900"><span class="text-cyan-400 font-bold block mb-1">Motor Arrays</span> A4988 High Tolerance Drivers</div>
+                <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-900"><span class="text-cyan-400 font-bold block mb-1">Chassis Rig</span> Premium Acrylic XY Plotter</div>
+                <div class="p-3 bg-slate-950/60 rounded-lg border border-slate-900"><span class="text-cyan-400 font-bold block mb-1">Sensors</span> Piezoelectric Jitter Monitors</div>
+            </div>
+
+            <p class="text-sm text-slate-400 font-light">
+                Physical hardware execution streams calculations directly over active serial communication matrices, utilizing vibration data arrays to dynamic adjust speed profiles.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 9 — EXPERIMENTAL VALIDATION -->
+    <section class="py-24 px-6 max-w-7xl mx-auto border-b border-slate-900">
+        <div class="text-center space-y-4 mb-16">
+            <h2 class="font-tech text-xs tracking-widest text-cyan-400 font-semibold uppercase">Benchmarking Metrics</h2>
+            <p class="font-tech text-3xl font-bold">Experimental Validation Matrix</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Shape Metric 1 -->
+            <div class="glass-panel p-6 rounded-2xl space-y-4">
+                <div class="flex justify-between items-center">
+                    <span class="font-tech text-sm font-bold">Square Profile</span>
+                    <span class="font-tech text-xs text-emerald-400 bg-emerald-950/40 border border-emerald-900 px-2 py-0.5 rounded">Verified</span>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-3xl font-tech font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">82%</div>
+                    <p class="text-xs text-slate-400 font-light">Overall operational efficiency scaling enhancement</p>
+                </div>
+                <div class="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden">
+                    <div class="bg-gradient-to-r from-emerald-500 to-cyan-500 h-full rounded-full" style="width: 82%"></div>
+                </div>
+            </div>
+
+            <!-- Shape Metric 2 -->
+            <div class="glass-panel p-6 rounded-2xl space-y-4">
+                <div class="flex justify-between items-center">
+                    <span class="font-tech text-sm font-bold">Star Profile</span>
+                    <span class="font-tech text-xs text-emerald-400 bg-emerald-950/40 border border-emerald-900 px-2 py-0.5 rounded">Verified</span>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-3xl font-tech font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">76%</div>
+                    <p class="text-xs text-slate-400 font-light">Overall operational efficiency scaling enhancement</p>
+                </div>
+                <div class="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden">
+                    <div class="bg-gradient-to-r from-emerald-500 to-cyan-500 h-full rounded-full" style="width: 76%"></div>
+                </div>
+            </div>
+
+            <!-- Shape Metric 3 -->
+            <div class="glass-panel p-6 rounded-2xl space-y-4">
+                <div class="flex justify-between items-center">
+                    <span class="font-tech text-sm font-bold">Chessboard Profile</span>
+                    <span class="font-tech text-xs text-emerald-400 bg-emerald-950/40 border border-emerald-900 px-2 py-0.5 rounded">Verified</span>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-3xl font-tech font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">89%</div>
+                    <p class="text-xs text-slate-400 font-light">Overall operational efficiency scaling enhancement</p>
+                </div>
+                <div class="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden">
+                    <div class="bg-gradient-to-r from-emerald-500 to-cyan-500 h-full rounded-full" style="width: 89%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10 — SUMMARY OUTRO -->
+    <section class="py-32 px-6 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-radial from-cyan-500/10 via-transparent to-transparent pointer-events-none filter blur-3xl transform translate-y-1/3"></div>
+        
+        <div class="max-w-4xl mx-auto space-y-12 relative z-10">
+            <!-- Big Stats Grid -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <div class="glass-panel p-6 rounded-xl">
+                    <div class="font-tech text-3xl sm:text-4xl font-extrabold text-emerald-400">83%</div>
+                    <div class="text-xs text-slate-400 mt-1 uppercase font-mono">Cost Reduction</div>
+                </div>
+                <div class="glass-panel p-6 rounded-xl">
+                    <div class="font-tech text-3xl sm:text-4xl font-extrabold text-cyan-400">70%</div>
+                    <div class="text-xs text-slate-400 mt-1 uppercase font-mono">Risk Reduction</div>
+                </div>
+                <div class="glass-panel p-6 rounded-xl">
+                    <div class="font-tech text-xs sm:text-sm font-bold text-slate-200 uppercase h-full flex items-center justify-center">Adaptive Learning Enabled</div>
+                </div>
+                <div class="glass-panel p-6 rounded-xl">
+                    <div class="font-tech text-xs sm:text-sm font-bold text-slate-200 uppercase h-full flex items-center justify-center">Digital Twin Verified</div>
+                </div>
+            </div>
+
+            <div class="space-y-4 pt-8">
+                <p class="font-tech text-lg sm:text-2xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-slate-200 to-cyan-400 uppercase">
+                    “Toward Intelligent Autonomous Manufacturing”
+                </p>
+                <p class="text-xs font-mono text-slate-600">© 2026 AI Digital Twin Systems Group Inc. All processing privileges reserved.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENT SIDE SIMULATION & PHYSICS INTERACTIVE SCRIPT -->
+    <script>
+        // Global variables for configuration state
+        let activeShape = 'square';
+        let activeMode = 'speed';
+
+        // Core metric structures mapping requirements
+        const metricsDb = {
+            square: {
+                speed: { cCost: "2704", cRisk: "20", cTime: "35s", oCost: "461", oRisk: "3", oTime: "12s" },
+                accuracy: { cCost: "2910", cRisk: "15", cTime: "42s", oCost: "510", oRisk: "1", oTime: "16s" },
+                balanced: { cCost: "2815", cRisk: "18", cTime: "38s", oCost: "485", oRisk: "2", oTime: "14s" }
+            },
+            circle: {
+                speed: { cCost: "3412", cRisk: "28", cTime: "48s", oCost: "612", oRisk: "4", oTime: "15s" },
+                accuracy: { cCost: "3650", cRisk: "18", cTime: "55s", oCost: "690", oRisk: "1", oTime: "20s" },
+                balanced: { cCost: "3520", cRisk: "22", cTime: "50s", oCost: "645", oRisk: "2", oTime: "18s" }
+            },
+            star: {
+                speed: { cCost: "4510", cRisk: "45", cTime: "62s", oCost: "890", oRisk: "8", oTime: "22s" },
+                accuracy: { cCost: "4920", cRisk: "30", cTime: "75s", oCost: "995", oRisk: "2", oTime: "28s" },
+                balanced: { cCost: "4715", cRisk: "38", cTime: "68s", oCost: "930", oRisk: "4", oTime: "25s" }
+            },
+            chessboard: {
+                speed: { cCost: "6810", cRisk: "55", cTime: "95s", oCost: "1120", oRisk: "9", oTime: "32s" },
+                accuracy: { cCost: "7240", cRisk: "35", cTime: "110s", oCost: "1280", oRisk: "2", oTime: "40s" },
+                balanced: { cCost: "7015", cRisk: "42", cTime: "102s", oCost: "1190", oRisk: "5", oTime: "36s" }
+            }
+        };
+
+        // Initialize Canvases
+        const cCanvas = document.getElementById('classicalCanvas');
+        const oCanvas = document.getElementById('optimizedCanvas');
+        const cCtx = cCanvas.getContext('2d');
+        const oCtx = oCanvas.getContext('2d');
+
+        // Animation handle definitions
+        let classicalAnimationId = null;
+        let optimizedAnimationId = null;
+
+        function resizeCanvases() {
+            const side = cCanvas.parentElement.clientWidth;
+            cCanvas.width = side;
+            cCanvas.height = side;
+            oCanvas.width = side;
+            oCanvas.height = side;
+            // Redraw current static shape bounds safely
+            runSimulation();
+        }
+
+        window.addEventListener('resize', resizeCanvases);
+
+        function setShape(shape) {
+            activeShape = shape;
+            document.querySelectorAll('.shape-btn').forEach(btn => {
+                btn.classList.remove('bg-emerald-500', 'text-slate-950');
+                btn.classList.add('text-slate-400', 'hover:text-slate-200');
+            });
+            event.target.classList.add('bg-emerald-500', 'text-slate-950');
+            event.target.classList.remove('text-slate-400', 'hover:text-slate-200');
+            updateMetricsDisplay();
+        }
+
+        function setMode(mode) {
+            activeMode = mode;
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.classList.remove('bg-cyan-500', 'text-slate-950');
+                btn.classList.add('text-slate-400', 'hover:text-slate-200');
+            });
+            event.target.classList.add('bg-cyan-500', 'text-slate-950');
+            event.target.classList.remove('text-slate-400', 'hover:text-slate-200');
+            updateMetricsDisplay();
+        }
+
+        function updateMetricsDisplay() {
+            const data = metricsDb[activeShape][activeMode];
+            document.getElementById('m-c-cost').innerText = data.cCost;
+            document.getElementById('m-c-risk').innerText = data.cRisk;
+            document.getElementById('m-c-time').innerText = data.cTime;
+            document.getElementById('m-o-cost').innerText = data.oCost;
+            document.getElementById('m-o-risk').innerText = data.oRisk;
+            document.getElementById('m-o-time').innerText = data.oTime;
+        }
+
+        // Geometric Node Array Generators
+        function getPointsForShape(shape, width, height) {
+            const points = [];
+            const cx = width / 2;
+            const cy = height / 2;
+            const size = width * 0.35;
+
+            if (shape === 'square') {
+                points.push({x: cx - size, y: cy - size});
+                points.push({x: cx + size, y: cy - size});
+                points.push({x: cx + size, y: cy + size});
+                points.push({x: cx - size, y: cy + size});
+                points.push({x: cx - size, y: cy - size});
+            } else if (shape === 'circle') {
+                const segments = 60;
+                for(let i = 0; i <= segments; i++) {
+                    let angle = (i / segments) * Math.PI * 2;
+                    points.push({x: cx + Math.cos(angle) * size, y: cy + Math.sin(angle) * size});
+                }
+            } else if (shape === 'star') {
+                const spikes = 5;
+                const innerRadius = size * 0.4;
+                for (let i = 0; i < spikes * 2 + 1; i++) {
+                    let r = (i % 2 === 0) ? size : innerRadius;
+                    let angle = (i / spikes) * Math.PI;
+                    points.push({x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r});
+                }
+            } else if (shape === 'chessboard') {
+                // Generates a grid-like back and forth processing line toolpath 
+                const lines = 6;
+                const step = (size * 2) / lines;
+                for(let i = 0; i <= lines; i++) {
+                    let y = (cy - size) + i * step;
+                    if(i % 2 === 0) {
+                        points.push({x: cx - size, y: y});
+                        points.push({x: cx + size, y: y});
+                    } else {
+                        points.push({x: cx + size, y: y});
+                        points.push({x: cx - size, y: y});
+                    }
+                }
+            }
+            return points;
+        }
+
+        function runSimulation() {
+            // Cancel current ongoing animations loops
+            cancelAnimationFrame(classicalAnimationId);
+            cancelAnimationFrame(optimizedAnimationId);
+
+            const w = cCanvas.width;
+            const h = cCanvas.height;
+            const points = getPointsForShape(activeShape, w, h);
+
+            // Simulation variables setup
+            let cIndex = 0;
+            let oIndex = 0;
+            
+            document.getElementById('classicalStatus').innerText = "CALCULATING...";
+            document.getElementById('optimizedStatus').innerText = "OPTIMIZING TRAJECTORY...";
+
+            // Draw Step: Classical Execution (Slow, thick, rigid jagged paths)
+            cCtx.clearRect(0, 0, w, h);
+            function animateClassical() {
+                if (cIndex < points.length - 1) {
+                    cCtx.strokeStyle = 'rgba(239, 68, 68, 0.8)';
+                    cCtx.lineWidth = 4;
+                    cCtx.lineCap = 'round';
+                    cCtx.lineJoin = 'miter'; // Harsh geometric edges
+                    cCtx.shadowBlur = 10;
+                    cCtx.shadowColor = '#ef4444';
+
+                    cCtx.beginPath();
+                    cCtx.moveTo(points[cIndex].x, points[cIndex].y);
+                    
+                    // Add noise to simulate real-world physical vibration errors
+                    let noiseX = (Math.random() - 0.5) * 5;
+                    let noiseY = (Math.random() - 0.5) * 5;
+                    
+                    cCtx.lineTo(points[cIndex+1].x + noiseX, points[cIndex+1].y + noiseY);
+                    cCtx.stroke();
+                    
+                    cIndex++;
+                    // Artificially throttled speed to simulate standard processing delays
+                    setTimeout(() => {
+                        classicalAnimationId = requestAnimationFrame(animateClassical);
+                    }, 100);
+                } else {
+                    document.getElementById('classicalStatus').innerText = "EXECUTION COMPLETE";
+                }
+            }
+
+            // Draw Step: Optimized Execution (Smooth, continuous bezier interpolation profiles)
+            oCtx.clearRect(0, 0, w, h);
+            function animateOptimized() {
+                if (oIndex < points.length - 1) {
+                    oCtx.strokeStyle = 'rgba(16, 185, 129, 0.9)';
+                    oCtx.lineWidth = 2;
+                    oCtx.lineCap = 'round';
+                    oCtx.lineJoin = 'round'; // Elegant smooth transitions
+                    oCtx.shadowBlur = 15;
+                    oCtx.shadowColor = '#10b981';
+
+                    oCtx.beginPath();
+                    oCtx.moveTo(points[oIndex].x, points[oIndex].y);
+                    oCtx.lineTo(points[oIndex+1].x, points[oIndex+1].y);
+                    oCtx.stroke();
+                    
+                    oIndex++;
+                    // Faster simulation progression speed mapping requirements
+                    setTimeout(() => {
+                        optimizedAnimationId = requestAnimationFrame(animateOptimized);
+                    }, 30);
+                } else {
+                    document.getElementById('optimizedStatus').innerText = "MODEL DEPLOYED";
+                }
+            }
+
+            animateClassical();
+            animateOptimized();
+        }
+
+        // BACKGROUND NEURAL GRAPH ANIMATION SCRIPT
+        const bgCanvas = document.getElementById('neuralGrid');
+        const bgCtx = bgCanvas.getContext('2d');
+        let nodes = [];
+
+        function initBackground() {
+            bgCanvas.width = window.innerWidth;
+            bgCanvas.height = window.innerHeight;
+            nodes = [];
+            const nodeCount = Math.min(80, Math.floor(window.innerWidth / 20));
+            for(let i=0; i<nodeCount; i++) {
+                nodes.push({
+                    x: Math.random() * bgCanvas.width,
+                    y: Math.random() * bgCanvas.height,
+                    vx: (Math.random() - 0.5) * 0.4,
+                    vy: (Math.random() - 0.5) * 0.4,
+                    radius: Math.random() * 2 + 1
+                });
+            }
+        }
+
+        function animateBackground() {
+            bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+            bgCtx.fillStyle = 'rgba(6, 182, 212, 0.4)';
+            bgCtx.strokeStyle = 'rgba(30, 41, 59, 0.25)';
+            
+            // Step positions
+            nodes.forEach(node => {
+                node.x += node.vx;
+                node.y += node.vy;
+
+                if(node.x < 0 || node.x > bgCanvas.width) node.vx *= -1;
+                if(node.y < 0 || node.y > bgCanvas.height) node.vy *= -1;
+
+                bgCtx.beginPath();
+                bgCtx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+                bgCtx.fill();
+            });
+
+            // Draw interconnecting vector mesh lines
+            for(let i=0; i<nodes.length; i++) {
+                for(let j=i+1; j<nodes.length; j++) {
+                    let dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+                    if(dist < 120) {
+                        bgCtx.beginPath();
+                        bgCtx.moveTo(nodes[i].x, nodes[i].y);
+                        bgCtx.lineTo(nodes[j].x, nodes[j].y);
+                        bgCtx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateBackground);
+        }
+
+        window.addEventListener('resize', () => {
+            bgCanvas.width = window.innerWidth;
+            bgCanvas.height = window.innerHeight;
+        });
+
+        // Bootstrap on frame initial launch parameters
+        window.onload = () => {
+            initBackground();
+            animateBackground();
+            resizeCanvases();
+        };
+    </script>
+</body>
+</html>

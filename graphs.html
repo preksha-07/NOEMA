@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>NOEMA Analytics</title>
+
+<link rel="stylesheet" href="/static/graphs.css">
+
+
+</head>
+
+<body>
+
+
+<!-- VIDEO BACKGROUND -->
+
+<div class="video-background">
+
+    <video autoplay muted loop playsinline>
+
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260508_215831_c6a8989c-d716-4d8d-8745-e972a2eec711.mp4"
+                type="video/mp4">
+
+    </video>
+
+    <div class="video-overlay"></div>
+
+</div>
+
+<!-- HEADER -->
+
+<header class="analytics-header">
+
+    <span class="analytics-tag">
+        NOEMA Manufacturing Intelligence
+    </span>
+
+    <h1>
+        Optimization Analytics Dashboard
+    </h1>
+
+    <p>
+        Real-time optimization insights, convergence analysis,
+        digital twin validation and machine learning metrics.
+    </p>
+
+</header>
+
+<section>
+
+    <div class="session-summary">
+
+        <div class="summary-card">
+            <h3>Input Geometry</h3>
+            <p id="geometryType">USER INPUT IMAGE</p>
+        </div>
+
+        
+
+        <div class="summary-card">
+            <h3>Candidates Generated</h3>
+            <p id="candidateTotal">1000</p>
+        </div>
+
+        <div class="summary-card">
+            <h3>Selected Path</h3>
+            <p id="selectedPath">Optimized Solution</p>
+        </div>
+
+        <div class="summary-card">
+    <h3>Measured Vibration</h3>
+    <p id="vibrationValue">--</p>
+</div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <div class="hero-improvement">
+
+        
+
+        <h2>
+            Manufacturing Cost Reduction
+        </h2>
+
+        <p>
+            Achieved through quantum-inspired convergence,
+            digital twin validation and adaptive optimization.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- KPI SECTION -->
+
+
+
+<!-- ENERGY DISTRIBUTION -->
+
+
+<!-- CONVERGENCE -->
+
+
+
+<!-- OPTIMIZATION RESULTS -->
+
+<div class="chart-card">
+
+    <h3>Classical Toolpath</h3>
+
+    <img
+        id="classical"
+        class="graph-image"
+    >
+
+</div>
+
+<div class="chart-card">
+
+    <h3>Optimized Toolpath</h3>
+
+    <img
+        id="optimized"
+        class="graph-image"
+    >
+
+</div>
+
+<div class="chart-card">
+
+    <h3>Path Comparison</h3>
+
+    <img
+        id="comparison"
+        class="graph-image"
+    >
+
+</div>
+
+
+<section>
+
+    <div class="comparison-grid">
+
+        <div class="glass-card graph-card">
+
+            <h2>
+                Cost Comparison
+            </h2>
+
+            <img id="cost" class="graph-image">
+
+        </div>
+
+        <div class="glass-card graph-card">
+
+            <h2>
+                Distance Comparison
+            </h2>
+
+            <img id="distance" class="graph-image">
+
+        </div>
+
+        <div class="glass-card graph-card">
+
+            <h2>
+                Risk Comparison
+            </h2>
+
+            <img id="risk" class="graph-image">
+
+        </div>
+
+        <div class="glass-card graph-card">
+
+            <h2>
+                Turns Reduction
+            </h2>
+
+            <img id="turns" class="graph-image">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DIGITAL TWIN -->
+
+<section>
+
+    <div class="glass-card twin-card">
+
+        <h2>
+            Digital Twin Validation
+        </h2>
+
+        <img id="digitalTwin" class="graph-image">
+
+    </div>
+
+</section>
+
+<!-- LEARNING SYSTEM -->
+
+<section>
+
+    <div class="glass-card graph-card">
+
+        <h2>
+            Learning System Evolution
+        </h2>
+
+        <img id="learning" class="graph-image">
+        
+
+    </div>
+
+</section>
+
+<!-- ML ANALYTICS -->
+
+           
+
+
+<!--<section>
+
+    <div class="glass-card export-panel">
+
+        <h2>
+            Export Results
+        </h2>
+
+        <div class="export-buttons">
+
+            <button>
+                Export PDF
+            </button>
+
+            <button>
+                Export CSV
+            </button>
+
+            <button>
+                Download Graphs
+            </button>
+
+        </div>
+
+    </div>
+
+</section> -->
+
+<section>
+
+    
+
+</section>
+
+<!-- BACK BUTTON -->
+
+<section class="back-section">
+
+    <button
+        onclick=history.back()
+        class="back-button">
+
+        ← Return To Workspace
+
+    </button>
+
+</section>
+
+<!-- CHART.JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="/static/graphs.js"></script>
+
+
+</body>
+
+</html>

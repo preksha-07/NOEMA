@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOEMA Research</title>
+
+<link rel="stylesheet" href="research.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ========================================= -->
+<!-- BACKGROUND VIDEO -->
+<!-- ========================================= -->
+
+<div class="video-background">
+
+    <video autoplay muted loop playsinline>
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260508_215831_c6a8989c-d716-4d8d-8745-e972a2eec711.mp4" type="video/mp4">
+    </video>
+
+    <div class="video-overlay"></div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- HERO -->
+<!-- ========================================= -->
+
+<section class="research-hero">
+
+    <div class="hero-content">
+
+        <div class="research-badge">
+            Research Architecture
+        </div>
+
+        <h1>
+            NOEMA
+        </h1>
+
+        <h2>
+            Quantum-Inspired Manufacturing Intelligence
+        </h2>
+
+        <p>
+            Adaptive Toolpath Optimization using QUBO Modeling,
+            Simulated Annealing, Digital Twin Validation,
+            and Manufacturing Execution Intelligence.
+        </p>
+
+        <div class="hero-tags">
+
+            <span>QUBO</span>
+            <span>Simulated Annealing</span>
+            <span>Digital Twin</span>
+            <span>Adaptive Learning</span>
+            <span>Industry 4.0</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- ABSTRACT -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+
+        <span>01</span>
+
+        <h2>Abstract</h2>
+
+    </div>
+
+    <div class="glass-card">
+
+        <p>
+
+            Traditional manufacturing systems frequently rely on
+            predefined execution paths that are not globally optimized.
+            This often results in excessive machine movement,
+            increased execution time, unnecessary operational cost,
+            higher wear accumulation, and reduced manufacturing efficiency.
+
+        </p>
+
+        <p>
+
+            NOEMA introduces an intelligent manufacturing framework
+            capable of generating optimized machine trajectories through
+            a combination of image processing, graph-based optimization,
+            Quadratic Unconstrained Binary Optimization (QUBO),
+            simulated annealing, convergence-driven candidate reduction,
+            and digital twin validation.
+
+        </p>
+
+        <p>
+
+            The proposed framework transforms geometric designs into
+            manufacturable toolpaths, evaluates thousands of candidate
+            solutions, predicts execution performance before deployment,
+            and continuously improves decision quality through adaptive
+            feedback mechanisms.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- INTRODUCTION -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+
+        <span>02</span>
+
+        <h2>Introduction</h2>
+
+    </div>
+
+    <div class="intro-grid">
+
+        <div class="glass-card">
+
+            <h3>
+                Manufacturing Challenges
+            </h3>
+
+            <ul>
+
+                <li>Inefficient toolpaths</li>
+
+                <li>Non-productive machine travel</li>
+
+                <li>Increased execution time</li>
+
+                <li>Mechanical wear accumulation</li>
+
+                <li>Energy inefficiency</li>
+
+                <li>Operational cost increase</li>
+
+                <li>Lack of predictive validation</li>
+
+            </ul>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>
+                Need For Intelligent Planning
+            </h3>
+
+            <p>
+
+                Modern manufacturing systems must operate under
+                uncertainty, machine constraints, and performance
+                objectives that often conflict with one another.
+                Traditional shortest-path approaches fail to consider
+                manufacturability, risk, and execution dynamics.
+
+            </p>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>
+                Research Motivation
+            </h3>
+
+            <div class="pillar-grid">
+
+                <div>Optimize</div>
+                <div>Predict</div>
+                <div>Validate</div>
+                <div>Learn</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- THEORETICAL FOUNDATIONS -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+
+        <span>03</span>
+
+        <h2>Theoretical Foundations</h2>
+
+    </div>
+
+    <div class="theory-grid">
+
+        <div class="glass-card">
+
+            <h3>
+                Manufacturing Optimization Theory
+            </h3>
+
+            <p>
+
+                Manufacturing path planning belongs to a class of
+                combinatorial optimization problems where the number
+                of possible solutions increases exponentially with
+                the number of execution points.
+
+            </p>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>
+                Traveling Salesman Analogy
+            </h3>
+
+            <p>
+
+                Toolpath planning can be represented similarly to the
+                Traveling Salesman Problem (TSP), where the objective
+                is to determine the most efficient traversal sequence
+                through a set of locations.
+
+            </p>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>
+                Graph Theory
+            </h3>
+
+            <p>
+
+                Geometry points are modeled as graph nodes while
+                potential movements between points are modeled as
+                weighted edges. Optimization is performed over this
+                graph representation.
+
+            </p>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>
+                Stochastic Optimization
+            </h3>
+
+            <p>
+
+                Instead of assuming a deterministic search strategy,
+                NOEMA employs probabilistic exploration mechanisms
+                capable of escaping local optima and discovering
+                higher quality solutions.
+
+            </p>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>
+                Probability & Uncertainty
+            </h3>
+
+            <p>
+
+                Real manufacturing environments are affected by
+                vibration, positioning errors, mechanical deviations,
+                and environmental disturbances. These uncertainties
+                motivate the incorporation of risk-aware optimization.
+
+            </p>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>
+                Industry 4.0 Principles
+            </h3>
+
+            <p>
+
+                NOEMA aligns with Industry 4.0 through the integration
+                of cyber-physical systems, digital twins, predictive
+                analytics, and intelligent manufacturing execution.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PROBLEM FORMULATION -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+
+        <span>04</span>
+
+        <h2>Problem Formulation</h2>
+
+    </div>
+
+    <div class="formulation-container">
+
+        <div class="glass-card">
+
+            <h3>
+                Toolpath Representation
+            </h3>
+
+            <p>
+
+                Extracted contour points are transformed into a graph
+                representation where each point acts as a node and
+                every traversal possibility contributes to the search
+                space explored by the optimization engine.
+
+            </p>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>
+                QUBO Formulation
+            </h3>
+
+            <div class="formula">
+
+                min xᵀQx
+
+            </div>
+
+            <p>
+
+                Candidate manufacturing paths are evaluated using a
+                Quadratic Unconstrained Binary Optimization framework,
+                enabling energy-based solution ranking.
+
+            </p>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>
+                Energy Landscape
+            </h3>
+
+            <p>
+
+                Every candidate path corresponds to an energy state.
+                Lower energy represents a more desirable manufacturing
+                solution with reduced operational cost.
+
+            </p>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>
+                Simulated Annealing Acceptance
+            </h3>
+
+            <div class="formula">
+
+                P = e<sup>-ΔE/T</sup>
+
+            </div>
+
+            <p>
+
+                Worse solutions may be temporarily accepted with a
+                probability dependent on temperature, enabling global
+                exploration and avoidance of local minima.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- IMAGE PROCESSING PIPELINE -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+
+        <span>05</span>
+
+        <h2>Image Processing Pipeline</h2>
+
+    </div>
+
+    <div class="glass-card large-card">
+
+        <p>
+
+            NOEMA begins with geometric image acquisition.
+            Input designs are transformed into manufacturable
+            machine representations through a multi-stage image
+            processing pipeline that extracts meaningful execution
+            geometry while minimizing computational complexity.
+
+        </p>
+
+    </div>
+
+    <div class="pipeline-grid">
+
+        <div class="pipeline-card">
+            <div class="pipeline-number">01</div>
+            <h3>Image Acquisition</h3>
+            <p>
+                PNG and JPG geometries are imported into the
+                processing engine.
+            </p>
+        </div>
+
+        <div class="pipeline-card">
+            <div class="pipeline-number">02</div>
+            <h3>Edge Detection</h3>
+            <p>
+                Structural boundaries are extracted using
+                edge-based image analysis.
+            </p>
+        </div>
+
+        <div class="pipeline-card">
+            <div class="pipeline-number">03</div>
+            <h3>Contour Extraction</h3>
+            <p>
+                Continuous geometric contours are isolated
+                from image boundaries.
+            </p>
+        </div>
+
+        <div class="pipeline-card">
+            <div class="pipeline-number">04</div>
+            <h3>Contour Cleaning</h3>
+            <p>
+                Noise and redundant contour fragments are
+                removed.
+            </p>
+        </div>
+
+        <div class="pipeline-card">
+            <div class="pipeline-number">05</div>
+            <h3>Point Reduction</h3>
+            <p>
+                Geometry is simplified while preserving
+                essential structural information.
+            </p>
+        </div>
+
+        <div class="pipeline-card">
+            <div class="pipeline-number">06</div>
+            <h3>Point Cloud Generation</h3>
+            <p>
+                Final contour points become optimization
+                nodes for path planning.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- OPTIMIZATION ENGINE -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+
+        <span>06</span>
+
+        <h2>Optimization Engine</h2>
+
+    </div>
+
+    <div class="glass-card large-card">
+
+        <p>
+
+            The optimization engine evaluates a large number
+            of candidate manufacturing paths and identifies
+            the most efficient solution through cost-aware,
+            risk-aware and energy-based optimization.
+
+        </p>
+
+    </div>
+
+    <div class="engine-grid">
+
+        <div class="glass-card">
+
+            <h3>Candidate Generation</h3>
+
+            <p>
+
+                Multiple candidate solutions are generated
+                through path exploration mechanisms. These
+                candidates form the search space explored by
+                the optimization engine.
+
+            </p>
+
+            <div class="big-number">
+
+                1000+
+
+            </div>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>Path Evaluation</h3>
+
+            <p>
+
+                Every candidate is evaluated using
+                manufacturing metrics including
+                distance, risk and execution cost.
+
+            </p>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>Cost Function</h3>
+
+            <div class="formula">
+
+                Cost =wd·Distance + wt·Time + wr·Risk + wp·TurnPenalty + 
+                ws·SmoothnessPenalty + wv·SpeedPenalty + wj·JumpPenalty
+            </div>
+
+            <h5>
+
+                Current implementation evaluates
+                manufacturing efficiency using a
+                weighted cost model.
+
+               <p> where,
+
+                wd = distance weight, 
+wt = time weight, 
+wr = risk weight, 
+wp = turn weight, 
+ws = smoothness weight, 
+wv = speed weight, 
+wj = jump weight </p>
+
+               </h5>
+
+        </div>
+
+        
+
+            <p>
+
+                The architecture supports future
+                integration of execution time,
+                risk and constraint penalties.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CONVERGENCE FRAMEWORK -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+
+        <span>07</span>
+
+        <h2>Convergence Framework</h2>
+
+    </div>
+
+    <div class="glass-card large-card">
+
+        <p>
+
+            Instead of optimizing every candidate equally,
+            NOEMA progressively reduces the solution space
+            through hierarchical filtering and refinement.
+
+        </p>
+
+    </div>
+
+    <div class="convergence-container">
+
+        <div class="convergence-stage">1000</div>
+        <div class="arrow">↓</div>
+
+        <div class="convergence-stage">200</div>
+        <div class="arrow">↓</div>
+
+        <div class="convergence-stage">50</div>
+        <div class="arrow">↓</div>
+
+        <div class="convergence-stage">10</div>
+        <div class="arrow">↓</div>
+
+        <div class="convergence-stage">3</div>
+        <div class="arrow">↓</div>
+
+        <div class="convergence-stage final">
+            1
+        </div>
+
+    </div>
+
+    <div class="convergence-grid">
+
+        <div class="glass-card">
+            <h3>Distance Filtering</h3>
+            <p>
+                Remove paths with excessive travel.
+            </p>
+        </div>
+
+        <div class="glass-card">
+            <h3>Turn Filtering</h3>
+            <p>
+                Eliminate paths with unnecessary
+                directional changes.
+            </p>
+        </div>
+
+        <div class="glass-card">
+            <h3>Risk Filtering</h3>
+            <p>
+                Remove candidates vulnerable to
+                execution uncertainty.
+            </p>
+        </div>
+
+        <div class="glass-card">
+            <h3>Manufacturability Scoring</h3>
+            <p>
+                Combine multiple metrics into a
+                unified evaluation framework.
+            </p>
+        </div>
+
+        <div class="glass-card">
+            <h3>Top Candidate Refinement</h3>
+            <p>
+                Simulated annealing further refines
+                the strongest solutions.
+            </p>
+        </div>
+
+        <div class="glass-card">
+            <h3>Final Selection</h3>
+            <p>
+                Lowest cost candidate is selected
+                for manufacturing execution.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="convergence-visual">
+
+    <canvas id="convergenceCanvas"></canvas>
+
+    <div class="convergence-overlay">
+
+        <h3 id="stageTitle">
+            Generating Candidates
+        </h3>
+
+        <p id="stageCount">
+            1000 Candidates
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- DIGITAL TWIN ARCHITECTURE -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+
+        <span>08</span>
+
+        <h2>Digital Twin Architecture</h2>
+
+    </div>
+
+    <div class="glass-card large-card">
+
+        <p>
+
+            NOEMA employs a digital twin framework
+            that predicts execution behavior before
+            deployment to the physical system.
+
+        </p>
+
+    </div>
+
+    <div class="twin-flow">
+
+        <div class="twin-step">
+
+            <h3>Prediction</h3>
+
+            <p>
+
+                Estimate cost, risk,
+                and execution behavior.
+
+            </p>
+
+        </div>
+
+        <div class="twin-arrow">→</div>
+
+        <div class="twin-step">
+
+            <h3>Execution</h3>
+
+            <p>
+
+                Run optimized path
+                on manufacturing hardware.
+
+            </p>
+
+        </div>
+
+        <div class="twin-arrow">→</div>
+
+        <div class="twin-step">
+
+            <h3>Measurement</h3>
+
+            <p>
+
+                Collect actual
+                execution metrics.
+
+            </p>
+
+        </div>
+
+        <div class="twin-arrow">→</div>
+
+        <div class="twin-step">
+
+            <h3>Error Analysis</h3>
+
+            <p>
+
+                Compare predicted
+                and actual performance.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="comparison-panel">
+
+        <div class="glass-card">
+
+            <h3>
+                Predicted Performance
+            </h3>
+
+            <ul>
+
+                <li>Estimated Time</li>
+                <li>Estimated Risk</li>
+                <li>Estimated Cost</li>
+
+            </ul>
+
+        </div>
+
+        <div class="glass-card">
+
+            <h3>
+                Actual Performance
+            </h3>
+
+            <ul>
+
+                <li>Measured Time</li>
+                <li>Measured Risk</li>
+                <li>Measured Cost</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- ADAPTIVE LEARNING -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+
+        <span>09</span>
+
+        <h2>Adaptive Learning System</h2>
+
+    </div>
+
+    <div class="glass-card large-card">
+
+        <p>
+
+            NOEMA continuously improves decision
+            quality through feedback-driven learning.
+            Prediction errors are analyzed and used
+            to refine future optimization behavior.
+
+        </p>
+
+    </div>
+
+    <div class="learning-flow">
+
+        <div>Prediction</div>
+
+        <div>↓</div>
+
+        <div>Execution</div>
+
+        <div>↓</div>
+
+        <div>Error Analysis</div>
+
+        <div>↓</div>
+
+        <div>Weight Update</div>
+
+        <div>↓</div>
+
+        <div>Improved Decisions</div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COMPLETE SYSTEM PIPELINE -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+        <span>10</span>
+        <h2>Complete System Pipeline</h2>
+    </div>
+
+    <div class="glass-card large-card">
+
+        <p>
+            The NOEMA framework transforms an input geometry
+            into an executable manufacturing trajectory through
+            a fully integrated optimization and validation pipeline.
+        </p>
+
+    </div>
+
+    <div class="mega-pipeline">
+
+        <div class="pipeline-node">Image</div>
+        <div class="pipeline-arrow">↓</div>
+
+        <div class="pipeline-node">Contours</div>
+        <div class="pipeline-arrow">↓</div>
+
+        <div class="pipeline-node">Points</div>
+        <div class="pipeline-arrow">↓</div>
+
+        <div class="pipeline-node">QUBO</div>
+        <div class="pipeline-arrow">↓</div>
+
+        <div class="pipeline-node">Optimization</div>
+        <div class="pipeline-arrow">↓</div>
+
+        <div class="pipeline-node">Convergence</div>
+        <div class="pipeline-arrow">↓</div>
+
+        <div class="pipeline-node">Toolpath</div>
+        <div class="pipeline-arrow">↓</div>
+
+        <div class="pipeline-node">G-code</div>
+        <div class="pipeline-arrow">↓</div>
+
+        <div class="pipeline-node">ESP32</div>
+        <div class="pipeline-arrow">↓</div>
+
+        <div class="pipeline-node">XY PLOTTER </div>
+        <div class="pipeline-arrow">↓</div>
+
+        
+
+        <div class="pipeline-node final-node">Validation Feedback</div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- MANUFACTURING EXECUTION -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+        <span>11</span>
+        <h2>Manufacturing Execution Layer</h2>
+    </div>
+
+    <div class="research-grid">
+
+        <div class="glass-card">
+            <h3>Toolpath Generation</h3>
+            <p>
+                Optimized point sequences are converted
+                into executable manufacturing trajectories.
+            </p>
+        </div>
+
+        <div class="glass-card">
+            <h3>G-code Generation</h3>
+            <p>
+                Toolpaths are translated into machine
+                commands for physical execution.
+            </p>
+        </div>
+
+        <div class="glass-card">
+            <h3>Machine Mapping</h3>
+            <p>
+                Coordinates are scaled and constrained
+                according to machine dimensions.
+            </p>
+        </div>
+
+        <div class="glass-card">
+            <h3>ESP32 Communication</h3>
+            <p>
+                Serial communication transfers commands
+                to the motion control system.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="terminal-window">
+
+<pre>
+G01 X120 Y340
+G01 X135 Y342
+G01 X149 Y350
+G01 X162 Y365
+G01 X174 Y381
+G01 X191 Y392
+G01 X205 Y410
+...
+</pre>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- EXPERIMENTAL VALIDATION -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+        <span>12</span>
+        <h2>Experimental Validation</h2>
+    </div>
+
+    <div class="glass-card large-card">
+
+        <p>
+
+            Multiple experimental trials are conducted to
+            evaluate optimization effectiveness and validate
+            digital twin predictions against physical execution.
+
+        </p>
+
+    </div>
+
+    <div class="research-grid">
+
+        <div class="glass-card">
+            <h3>Distance</h3>
+            <p>Total toolpath length</p>
+        </div>
+
+        <div class="glass-card">
+            <h3>Risk</h3>
+            <p>Execution uncertainty estimate</p>
+        </div>
+
+        <div class="glass-card">
+            <h3>Cost</h3>
+            <p>Optimization objective value</p>
+        </div>
+
+        <div class="glass-card">
+            <h3>Time</h3>
+            <p>Execution duration analysis</p>
+        </div>
+
+        <div class="glass-card">
+            <h3>Turns</h3>
+            <p>Directional change evaluation</p>
+        </div>
+
+        <div class="glass-card">
+            <h3>Error</h3>
+            <p>Predicted vs Actual deviation</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- RESULTS -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+        <span>13</span>
+        <h2>Results & Performance Analysis</h2>
+    </div>
+
+    <div class="metrics-grid">
+
+        <div class="metric-card">
+            <h3>Cost Reduction</h3>
+            <div class="metric-value">70%</div>
+        </div>
+
+        <div class="metric-card">
+            <h3>Risk Reduction</h3>
+            <div class="metric-value">40–80%</div>
+        </div>
+
+        <div class="metric-card">
+            <h3>Turn Reduction</h3>
+            <div class="metric-value">15–60%</div>
+        </div>
+
+        <div class="metric-card">
+            <h3>Convergence Efficiency</h3>
+            <div class="metric-value">75%+</div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- INDUSTRY 4.0 -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+        <span>14</span>
+        <h2>Industry 4.0 Alignment</h2>
+    </div>
+
+    <div class="research-grid">
+
+        <div class="glass-card">
+            <h3>Cyber Physical Systems</h3>
+        </div>
+
+        <div class="glass-card">
+            <h3>Digital Twins</h3>
+        </div>
+
+        <div class="glass-card">
+            <h3>Smart Manufacturing</h3>
+        </div>
+
+        <div class="glass-card">
+            <h3>Predictive Analytics</h3>
+        </div>
+
+        <div class="glass-card">
+            <h3>Manufacturing Automation</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- APPLICATIONS -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+        <span>15</span>
+        <h2>Applications</h2>
+    </div>
+
+    <div class="research-grid">
+
+        <div class="glass-card">CNC Machining</div>
+        <div class="glass-card">3D Printing</div>
+        <div class="glass-card">PCB Drilling</div>
+        <div class="glass-card">Robotic Welding</div>
+        <div class="glass-card">Warehouse Robotics</div>
+        <div class="glass-card">Smart Manufacturing</div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- RESEARCH CONTRIBUTIONS -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+        <span>16</span>
+        <h2>Research Contributions</h2>
+    </div>
+
+    <div class="glass-card">
+
+        <ul class="contribution-list">
+
+            <li>Quantum-inspired optimization framework</li>
+
+            <li>Convergence-based candidate reduction architecture</li>
+
+            <li>Digital twin validation methodology</li>
+
+            <li>Adaptive cost evaluation framework</li>
+
+            <li>Intelligent manufacturing path planning</li>
+
+            <li>Manufacturing execution integration</li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- LIMITATIONS -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+        <span>17</span>
+        <h2>Current Limitations</h2>
+    </div>
+
+    <div class="research-grid">
+
+        <div class="glass-card">
+            Single-contour optimization focus
+        </div>
+
+        <div class="glass-card">
+            Simple ML integration
+        </div>
+
+        <div class="glass-card">
+            Simplified execution time model
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- FUTURE WORK -->
+<!-- ========================================= -->
+
+<section class="research-section">
+
+    <div class="section-title">
+        <span>18</span>
+        <h2>Future Work</h2>
+    </div>
+
+    <div class="research-grid">
+
+        <div class="glass-card">
+            Multi-contour optimization
+        </div>
+
+
+        <div class="glass-card">
+            Industrial machine integration
+        </div>
+
+        <div class="glass-card">
+            Advanced feedrate planning
+        </div>
+
+        <div class="glass-card">
+            Advanced ML prediction systems
+        </div>
+
+        <div class="glass-card">
+            3D manufacturing extension
+        </div>
+
+    </div>
+
+    <section class="future-section">
+
+    <div class="section-heading">
+
+        <h1 class="section-tag">
+            Future Scalability
+        </h1>
+
+        <h2>
+            Beyond a 2D Plotter
+        </h2>
+
+        <p>
+            NOEMA is designed as a scalable manufacturing intelligence platform capable of extending across multiple machine architectures.
+        </p>
+
+    </div>
+
+    <div class="future-timeline">
+
+        <div class="future-card">
+
+            <div class="future-icon">01 :</div>
+
+            <h3>2D Plotter</h3>
+
+            <p>
+                Current implementation for intelligent toolpath optimization and execution.
+            </p>
+
+        </div>
+
+        <div class="future-arrow">↓</div>
+
+        <div class="future-card">
+
+            <div class="future-icon">02 :</div>
+
+            <h3>3D Printer</h3>
+
+            <p>
+                Extension to layer-by-layer additive manufacturing with Z-axis control.
+            </p>
+
+        </div>
+
+        <div class="future-arrow">↓</div>
+
+        <div class="future-card">
+
+            <div class="future-icon">03 :</div>
+
+            <h3>CNC Router</h3>
+
+            <p>
+                Intelligent machining path optimization for subtractive manufacturing.
+            </p>
+
+        </div>
+
+        <div class="future-arrow">↓</div>
+
+        <div class="future-card">
+
+            <div class="future-icon">04 :</div>
+
+            <h3>Laser System</h3>
+
+            <p>
+                High-speed engraving and cutting through adaptive motion planning.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</section>
+
+<!-- ========================================= -->
+<!-- FINAL CTA -->
+<!-- ========================================= -->
+
+<section class="research-cta">
+
+    <h2>
+        Explore the Complete NOEMA Ecosystem
+    </h2>
+
+    <p>
+        Continue from research and methodology
+        into implementation and hardware execution.
+    </p>
+
+    <div class="cta-buttons">
+
+        <a href="third.html" class="primary-btn">
+            Launch Workspace
+        </a>
+
+        <a href="second.html" class="secondary-btn">
+            Back
+        </a>
+
+    </div>
+
+</section>
+
+<script src="research.js"></script>
+
+</body>
+</html>
